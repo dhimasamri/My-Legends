@@ -1,8 +1,8 @@
 # Team J Assingment 3 Interaksi Manusia Komputer
 
-- Ahmad Al Jufri
-- Fernando
-- Dhimas Amri Pratama
+- Ahmad Al Jufri (1313618019)
+- Fernando (1313618020)
+- Dhimas Amri Pratama (1313618018)
 
 # Aplikasi My Legends / sosial media untuk pemain Mobile Legends
 
