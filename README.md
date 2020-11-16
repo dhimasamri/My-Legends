@@ -28,12 +28,4 @@ Fitur dalam mobile legends akan kami jabarkan sebagai berikut:
 - Fitur like dan komen pada status orang lain
 - Fitur posting foto / video
 
-### Artikel
-
-- Pemain dapat membuat artikelnya sendiri.
-- Artikel akan dimasukkan ke kelompok artikel.
-- Pemain dapat memberikan like pada artikel yang ia sukai.
-- Artikel dengan like banyak akan menjadi mudah di cari.
-- Fitur laporkan artikel yang tidak sesuai / menyesatkan.
-
 ## Desain kontrol
