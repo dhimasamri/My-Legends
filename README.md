@@ -34,8 +34,8 @@ Fitur dalam mobile legends akan kami jabarkan sebagai berikut:
   <img src="Phase-1/Diagram/Control design.png">
 </p>
 <p align="center">
-  <img height="300" src="Phase-1/Diagram/usecase1.png">
+  <img height="250" src="Phase-1/Diagram/usecase1.png">
   &nbsp &nbsp
-  <img height="300" src="Phase-1/Diagram/usecase2.png">
+  <img height="250" src="Phase-1/Diagram/usecase2.png">
 </p>
 
