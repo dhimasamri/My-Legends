@@ -42,3 +42,9 @@ Fitur dalam mobile legends akan kami jabarkan sebagai berikut:
   <img src="Phase-1/Diagram/usecase2.png">
 </p>
 
+## Data-data
+
+1. Data responden kuisioner 1 (50 orang) : https://github.com/dhimasamri/My-Legends/blob/main/Phase-1/KUISIONER%20WEBSITE%20MOBILE%20LEGENDS%20(Responses).xlsx
+2. Video self explaining mockup design : 
+3. Data responden kuisioner 2 (kuisioner phase 2) :
+4. Video presentasi UI dengan responden (Phase 2 Player mobile legend) : https://github.com/dhimasamri/My-Legends/blob/main/Phase-1/KUISIONER%20WEBSITE%20MOBILE%20LEGENDS%20(Responses).xlsx
