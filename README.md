@@ -47,4 +47,4 @@ Fitur dalam mobile legends akan kami jabarkan sebagai berikut:
 1. Data responden kuisioner 1 (50 orang) : https://github.com/dhimasamri/My-Legends/blob/main/Phase-1/KUISIONER%20WEBSITE%20MOBILE%20LEGENDS%20(Responses).xlsx
 2. Video self explaining mockup design : https://youtu.be/tbf9kx9cows
 3. Data responden kuisioner 2 (kuisioner phase 2) : https://github.com/dhimasamri/My-Legends/blob/main/Phase-2/KUISIONER%20TAHAP%202%20(FEEDBACK%20PARTISIPAN)%20(Responses).xlsx
-4. Video presentasi UI dengan responden (Phase 2 Player mobile legend) : https://github.com/dhimasamri/My-Legends/blob/main/Phase-1/KUISIONER%20WEBSITE%20MOBILE%20LEGENDS%20(Responses).xlsx
+4. Video presentasi UI dengan responden (Phase 2 Player mobile legend) : https://youtu.be/aI8huvkOQGA
