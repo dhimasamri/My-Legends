@@ -31,5 +31,11 @@ Fitur dalam mobile legends akan kami jabarkan sebagai berikut:
 ## Desain kontrol
 
 <p align="center">
-  <img src="Phase-1/Control design.png">
+  <img src="Phase-1/Diagram/Control design.png">
 </p>
+<p align="center">
+  <img height="300" src="Phase-1/Diagram/usecase1.png">
+  &nbsp &nbsp
+  <img height="300" src="Phase-1/Diagram/usecase2.png">
+</p>
+
