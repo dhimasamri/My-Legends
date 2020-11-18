@@ -33,6 +33,9 @@ Fitur dalam mobile legends akan kami jabarkan sebagai berikut:
 <p align="center">
   <img src="Phase-1/Diagram/Control design.png">
 </p>
+
+## Usecase
+
 <p align="center">
   <img src="Phase-1/Diagram/usecase1.png">
   &nbsp &nbsp
