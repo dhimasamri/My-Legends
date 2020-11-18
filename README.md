@@ -29,3 +29,7 @@ Fitur dalam mobile legends akan kami jabarkan sebagai berikut:
 - Fitur posting foto / video
 
 ## Desain kontrol
+
+<p align="center">
+  <img src="Phase-1/Control design.png">
+</p>
