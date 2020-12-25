@@ -10,5 +10,5 @@ My Legends adalah web sosial media yang ditujukan untuk para pemain Mobile Legen
 
 ## Link hostingan My Legends
 
-http://mylegend.epizy.com/?i=1
+http://www.mylegends.ml/
 
