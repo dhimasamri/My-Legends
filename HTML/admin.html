@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    
+<!-- bagian navbar -->
+  
+<form class="sticky-top" action="" method="post">
+
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="container d-flex justify-content-between">
+      <?php if(isset($_SESSION["login"])) { ?>
+  
+        <!-- bagian dropdown kalo udah login -->
+        <div class="dropdown">
+          <button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="img/<?php 
+                $nyoba = "SELECT * FROM akun WHERE email = '$emailakun'";
+                mysqli_query($conn, $nyoba) or die ('Error');
+                $result2 = mysqli_query($conn, $nyoba);
+                $row = mysqli_fetch_array($result2);
+                echo $row['gambar'];
+               ?>" alt="..." class="rounded-circle" style="width: 35px; height: 35px; object-fit: cover;">
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="ownprofil.php">Profil</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="logout.php">Sign Out</a>
+          </div>
+        </div>
+  
+          <a class="navbar-brand" href="index.php">My Legends</a>
+          <a href="tambah.php">
+          <button type="button" name="ngepost" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-plus"></i></button>
+          </a>
+  
+      <?php } else { ?>
+  
+        <!-- bagian dropdown kalo belom login -->
+        <a href="login.php">
+        <button type="button" name="login" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-user pr-2"></i>Login</button>
+        </a>
+          <a class="navbar-brand" href="index.php">My Legends</a>
+          <a href="login.php">
+          <button type="button" name="ngepost" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-plus" onclick="return confirm('harus login terlebih dahulu');"></i></button>
+          </a>
+        <?php } ?>
+      </div>
+     
+  
+    </nav>
+
+    <div class="container">
+      <ul class="nav justify-content-center nav-tabs" id="adminTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="about-tab" data-bs-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="users-tab" data-bs-toggle="tab" href="#users" role="tab" aria-controls="users" aria-selected="false">Users</a>        
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="posts-tab" data-bs-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="false">Posts</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="adminTabsContents">
+        <!-- Isi tab about -->
+        <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+          Isi dari tab about berada disini...
+        </div>
+
+        <!-- Isi tab Users -->
+        <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+          Isi dari tab Users berada disini
+        </div>
+
+        <!-- Isi tab posts -->
+        <div class="tab-pane fade" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+          Isis dari tab postingan berada disini
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
