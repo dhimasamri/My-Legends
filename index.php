@@ -3,7 +3,15 @@ session_start();
 
 if(isset($_SESSION["login"])) {
   $emailakun = $_SESSION['emailakun'];
+  
+  if($emailakun == 'admin@gmail.com'){
+  header('Location: admin.php');
+  exit;
+  }
 }
+
+
+
   
 require 'functions.php';
 
@@ -26,6 +34,16 @@ if(isset($_POST["cari"])){
 
 // echo date("d M Y");
 
+$survey = query("SELECT * FROM survey");
+
+if(isset($_POST["report"])) {
+    echo " 
+    <script>
+      alert('Terima kasih, report sedang di proses');
+    </script>";
+}
+            
+
 ?>
 
 
@@ -40,20 +58,20 @@ if(isset($_POST["cari"])){
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css"> -->
   </head>
 <body>
 
   <!-- bagian navbar -->
-  <form action="" method="post">
-  <div class="sticky-top">
-  <nav class="navbar navbar-dark bg-primary ">
+  <form action="" method="post" class="sticky-top">
+  <!-- <div class="sticky-top"> -->
+  <nav class="navbar navbar-dark bg-primary">
     <div class="container d-flex justify-content-between">
     <?php if(isset($_SESSION["login"])) { ?>
 
-      <!-- bagian dropdown kalo udah login -->
+      <!-- bagian navbar kalo udah login -->
       <div class="dropdown">
         <button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="img/<?php 
@@ -68,41 +86,38 @@ if(isset($_POST["cari"])){
           <a class="dropdown-item" href="ownprofil.php">Profil</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="logout.php">Sign Out</a>
+          <?php  
+          $result2 = mysqli_query($conn, "SELECT email FROM survey WHERE email = '$emailakun'");
+          if (mysqli_fetch_assoc($result2)) { ?>
+          <?php } else { ?>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item text-primary" href="survey.php">Survey</a>
+          <?php } ?>
         </div>
       </div>
 
         <a class="navbar-brand" href="index.php">My Legends</a>
+        
         <a href="tambah.php">
-        <button type="button" name="ngepost" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-plus"></i></button>
+        <button type="button" name="ngepost" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-plus" style="color: white !important"></i></button>
         </a>
 
     <?php } else { ?>
 
-      <!-- bagian dropdown kalo belom login -->
+      <!-- bagian navbar kalo belom login -->
       <a href="login.php">
-      <button type="button" name="login" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-user pr-2"></i>Login</button>
+      <button type="button" name="login" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-user pr-2" style="color: white !important"></i>Login</button>
       </a>
-      <!-- <div class="dropdown">
-        <button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="haya.jpeg" alt="..." class="rounded-circle" style="width: 35px; height: 35px; object-fit: cover;">
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Profil</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Sign Out</a>
-        </div>
-      </div> -->
 
         <a class="navbar-brand" href="index.php">My Legends</a>
         <a href="login.php">
-        <button type="button" name="ngepost" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-plus" onclick="return confirm('harus login terlebih dahulu');"></i></button>
+        <button type="button" name="ngepost" class="btn btn-primary my-2 my-sm-0"><i class="fas fa-plus" onclick="return confirm('harus login terlebih dahulu');" style="color: white;"></i></button>
         </a>
       <?php } ?>
     </div>
-   
 
   </nav>
-  </form>
+  
 
   <!-- bagian search bar -->
     <nav class="navbar navbar-dark" style="background-color: white;">
@@ -115,7 +130,7 @@ if(isset($_POST["cari"])){
         </form>
       </div>
     </nav>
-
+  </form>
       </div>
       
       <!-- bagian container -->
@@ -125,6 +140,7 @@ if(isset($_POST["cari"])){
       <!-- bagian card -->
     <form action="" method="post">
     <?php foreach($mahasiswa as $row) { ?>
+      <?php $idshare = $row['id']; ?>
     <div class="card border-secondary" style="max-width: 36rem; max-height: 36rem;">
 
       <!-- bagian atas card-->
@@ -150,20 +166,13 @@ if(isset($_POST["cari"])){
         </div>
         <div class="dropdown dropleft">
           <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-exclamation"></i>
+            <i class="fas fa-ellipsis-v" style="color: grey !important"></i>
           </button>
           <div class="dropdown-menu">
-            <h6 class="dropdown-header">Why are you reporting this post?</h6>
-            <a class="dropdown-item" name="report" href="index.php" onclick="return confirm('Are you sure want to report this post?')">It's spam</a>
-            <a class="dropdown-item" name="report" href="index.php" onclick="return confirm('Are you sure want to report this post?')">It's inappropriate</a>
-            <!-- <?php if(isset($_POST["report"])) {
-              echo " 
-              <script>
-                alert('Terima kasih, report sedang di proses');
-                document.location.href = 'index.php';
-              </script>";
-            }
-            ?> -->
+            <a class="a2a_dd dropdown-item" name="shareM" data-a2a-url="http://www.mylegends.ml/post.php?id=<?= $row["id"]; ?>" data-a2a-title="<?= $row["judul"]; ?>" href="https://www.addtoany.com/share">Share</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-danger" name="reportM" data-toggle="modal" href="#reportModal">Report</a>
+            
           </div>
         </div>
       </div>
@@ -195,36 +204,57 @@ if(isset($_POST["cari"])){
 
       <!-- bagian bawah card -->
       <div class="card-body">
-
-        <!-- like dan comment post -->
-        <!-- <div class="d-flex">
+        <div class="d-flex">
           <div class="align-self-center">
         <div class="d-flex justify-content-between" style="width: 8rem;">
-        <i class="fas fa-heart" style="color:grey;"></i>
-        <small>123</small>
-        <i class="fas fa-comment" style="color:grey;"></i>
-        <small>35</small>
+        <!-- like dan comment post -->
+          <!-- <a href="post.php?id=<?= $row["id"]; ?>">
+          <button class="btn btn-primary my-sm-0" type="button">See Post</button></a> -->
+        </div>
+          </div>
+      <!-- <button type="button" class="btn ml-auto" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-share-alt" style="color:grey !important;"></i></button>  -->
       </div>
-    </div>
-      <button type="button" class="btn ml-auto"><i class="fas fa-share-alt" style="color:grey;"></i></button> 
-    </div> -->
-    
-    
-      <!-- if user likes post, style button differently -->
-        <i <?php if (userLiked($row['id'])): ?>
-            class="fa fa-thumbs-up like-btn"
-          <?php else: ?>
-            class="fa fa-thumbs-o-up like-btn"
-          <?php endif ?>
-          data-id="<?php echo $row['id'] ?>"></i>
-        <span class="likes"><?php echo getLikes($row['id']); ?></span>
-
       </div>
     </div>
     <br>
     <?php } ?>
     </form>
     <script src="js/scripts.js"></script>
+
+    <!-- Modal Report button -->
+    <form action="" method="post">
+    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Report this post</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <a class="dropdown-item" name="report" href="index.php" onclick="return confirm('Are you sure want to report this post?')">It's spam</a>
+            <a class="dropdown-item" name="report" href="index.php" onclick="return confirm('Are you sure want to report this post?')">It's inappropriate</a>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+
+    <!-- AddToAny BEGIN -->
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+
+    <!-- Javascript -->
+    <script>
+      var a2a_config = a2a_config || {};
+      a2a_config.locale = "id";
+      a2a_config.onclick = 1;
+    </script>
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
 </body>
 </html>
 
