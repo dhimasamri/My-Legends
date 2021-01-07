@@ -52,5 +52,5 @@ Fitur dalam mobile legends akan kami jabarkan sebagai berikut:
 ## Final project report
 
 Link final project report : https://github.com/dhimasamri/My-Legends/tree/main/Final%20Project%20Report
-### Final project report 
+### link deploy 
 Link web yang sudah dideploy : http://mylegends.ml/
